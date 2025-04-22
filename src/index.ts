@@ -1,5 +1,6 @@
 import { COCKTAIL_BTN, COCKTAIL_FAVORITE_BTN, COCKTAIL_IMAGE_EL, COCKTAIL_NAME_EL, FAVORITES_DIV_EL } from './dom-utils';
 import { Cocktail } from './interfaces';
+import { renderNavbar } from './navbar';
 import { getLocalstorageCocktails, setLocalstorageCocktails } from './storage';
 import './styles/styles.css';
 
@@ -71,6 +72,7 @@ function startApp() {
     showCocktail();
     favorite_cocktails = getLocalstorageCocktails();
     renderFavorites();
+    renderNavbar();
 }
 
 
