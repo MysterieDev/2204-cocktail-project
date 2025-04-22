@@ -1,0 +1,1 @@
+export const COCKTAIL_BTN = document.querySelector("#cocktail_btn")
