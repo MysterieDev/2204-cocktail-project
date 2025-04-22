@@ -34,8 +34,18 @@ function renderFavorites() {
        <img src="${cocktail.strDrinkThumb}" style="width:50px" />
        `
 
+       // add remove favorite btn
+       const REMOVE_FAVORITE_BTN = document.createElement("BUTTON");
+       REMOVE_FAVORITE_BTN.innerHTML = "X";
+       REMOVE_FAVORITE_BTN.addEventListener("click", ()=> removeFavorite(cocktail.idDrink));
+       SINGLE_FAVORITE_ENTRY.appendChild(REMOVE_FAVORITE_BTN);
+
         FAVORITES_DIV_EL.appendChild(SINGLE_FAVORITE_ENTRY);
     })
+}
+
+function removeFavorite(idDrink: string){
+ console.log(idDrink)
 }
 
 function addToFavorites(idDrink: string) {
