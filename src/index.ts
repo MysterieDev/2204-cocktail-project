@@ -45,7 +45,9 @@ function renderFavorites() {
 }
 
 function removeFavorite(idDrink: string){
- console.log(idDrink)
+ favorite_cocktails = favorite_cocktails.filter((cocktail)=> cocktail.idDrink !== idDrink);
+ setLocalstorageCocktails(favorite_cocktails);
+ renderFavorites();
 }
 
 function addToFavorites(idDrink: string) {
