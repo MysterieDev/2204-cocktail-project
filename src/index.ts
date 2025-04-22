@@ -1,4 +1,4 @@
-import { COCKTAIL_BTN, COCKTAIL_FAVORITE_BTN, COCKTAIL_IMAGE_EL, COCKTAIL_NAME_EL } from './dom-utils';
+import { COCKTAIL_BTN, COCKTAIL_FAVORITE_BTN, COCKTAIL_IMAGE_EL, COCKTAIL_NAME_EL, FAVORITES_DIV_EL } from './dom-utils';
 import { Cocktail } from './interfaces';
 import { getLocalstorageCocktails, setLocalstorageCocktails } from './storage';
 import './styles/styles.css';
@@ -24,13 +24,26 @@ async function showCocktail(){
     COCKTAIL_IMAGE_EL.src = currentCocktail.strDrinkThumb;
 }
 
+function renderFavorites(){
+    // reset HTML
+    FAVORITES_DIV_EL.innerHTML = "";
+    favorite_cocktails.forEach(cocktail => {
+       const SINGLE_FAVORITE_ENTRY = document.createElement("DIV");
+       SINGLE_FAVORITE_ENTRY.innerHTML = `
+       <p>${cocktail.strDrink}</p>
+       <img src="${cocktail.strDrinkThumb}" style="width:50px" />
+       `
+
+       FAVORITES_DIV_EL.appendChild(SINGLE_FAVORITE_ENTRY);
+    })
+}
+
 function addToFavorites(){
     // new entry to favorites
     favorite_cocktails.push(currentCocktail);
     // synchronize Localstorage
     setLocalstorageCocktails(favorite_cocktails);
-
-    console.log(favorite_cocktails)
+    renderFavorites();
 }
 
 function startApp(){
@@ -38,6 +51,7 @@ function startApp(){
     COCKTAIL_FAVORITE_BTN.addEventListener("click", addToFavorites);
     showCocktail();
     favorite_cocktails = getLocalstorageCocktails();
+    renderFavorites();
 }
 
 
