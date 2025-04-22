@@ -1,5 +1,6 @@
 import { COCKTAIL_BTN, COCKTAIL_FAVORITE_BTN, COCKTAIL_IMAGE_EL, COCKTAIL_NAME_EL } from './dom-utils';
 import { Cocktail } from './interfaces';
+import { setLocalstorageCocktails } from './storage';
 import './styles/styles.css';
 
 // APP STATE - START
@@ -24,7 +25,12 @@ async function showCocktail(){
 }
 
 function addToFavorites(){
- console.log("funktioniert");
+    // new entry to favorites
+    favorite_cocktails.push(currentCocktail);
+    // synchronize Localstorage
+    setLocalstorageCocktails(favorite_cocktails);
+
+    console.log(favorite_cocktails)
 }
 
 function startApp(){
