@@ -7,9 +7,12 @@ function getCocktails(){
     .then(cocktails => cocktails)
 }
 
-function showCocktail(){
-
+async function showCocktail(){
+    const cocktails = await getCocktails();
+    const randomCocktailIndex = Math.floor(Math.random()*cocktails.length);
+    console.log(cocktails[randomCocktailIndex]);
 }
+
 
 
 function startApp(){
