@@ -1,4 +1,4 @@
-import { COCKTAIL_BTN, COCKTAIL_IMAGE_EL, COCKTAIL_NAME_EL } from './dom-utils';
+import { COCKTAIL_BTN, COCKTAIL_FAVORITE_BTN, COCKTAIL_IMAGE_EL, COCKTAIL_NAME_EL } from './dom-utils';
 import { Cocktail } from './interfaces';
 import './styles/styles.css';
 
@@ -23,10 +23,14 @@ async function showCocktail(){
     COCKTAIL_IMAGE_EL.src = currentCocktail.strDrinkThumb;
 }
 
-
+function addToFavorites(){
+ console.log("funktioniert");
+}
 
 function startApp(){
-    COCKTAIL_BTN!.addEventListener("click", showCocktail)
+    COCKTAIL_BTN!.addEventListener("click", showCocktail);
+    COCKTAIL_FAVORITE_BTN.addEventListener("click", addToFavorites);
+    showCocktail();
 }
 
 
